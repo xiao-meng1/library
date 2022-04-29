@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body, .body-container {
+    height: 100%;
+    margin: 0;
+}
+
+.body-container {
+    display: grid;
+    grid-template-columns: 1000px 200px;
+    grid-template-rows: 300px 400px;
+    grid-template-areas:
+        "library new-book"
+        "library .";
+    gap: 100px;
+    justify-content: center;
+    align-content: center;
+}
+
+.library-container {
+    grid-area: library;
+}
+
+.new-book-container {
+    grid-area: new-book;
+}
+
+
+
+.border {
+    border: solid black 2px;
+}
