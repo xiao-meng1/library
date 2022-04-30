@@ -7,6 +7,12 @@ html, body, .body-container {
     margin: 0;
 }
 
+h1 {
+    margin: 0;
+    text-align: center;
+    text-decoration: underline;
+}
+
 .body-container {
     display: grid;
     grid-template-columns: 1000px 200px;
@@ -21,12 +27,22 @@ html, body, .body-container {
 
 .library-container {
     grid-area: library;
+    display: grid;
+    grid-template-rows: auto 1fr;
 }
 
-.new-book-container {
+.library-container > .books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: 300px;
+    grid-auto-rows: 300px;
+    gap: 20px;
+    padding: 20px;
+}
+
+.add-book-container {
     grid-area: new-book;
 }
-
 
 
 .border {
