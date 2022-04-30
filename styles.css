@@ -7,8 +7,11 @@ html, body, .body-container {
     margin: 0;
 }
 
-h1 {
+h1, h2, h3, h4 {
     margin: 0;
+}
+
+h1 {
     text-align: center;
     text-decoration: underline;
 }
@@ -40,10 +43,20 @@ h1 {
     padding: 20px;
 }
 
+.library-container > .books-container > .book {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr) 1fr;
+    justify-items: center;
+    padding: 10px;
+}
+
+.library-container >.books-container .remove-button {
+    align-self: end;
+}
+
 .add-book-container {
     grid-area: new-book;
 }
-
 
 .border {
     border: solid black 2px;
