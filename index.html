@@ -18,10 +18,10 @@
                     <h3>Author</h3>
                     <h4>x pages</h4>
                     <div class="label-checkbox-container">
-                        <label>Read?</label>
+                        <label for="read-book-1">Read?</label>
                         <input type="checkbox" id="read-book-1">
                     </div>
-                    <button class="">Remove</button>
+                    <button>Remove</button>
                 </div>
                 <div class="book border"></div>
                 <div class="book border"></div>
@@ -31,7 +31,26 @@
             </div>
         </div>
         <div class="add-book-container border">
-
+            <h2>New Book</h2> 
+            <form class="add-book-form">
+                <div>
+                    <label for="title-input">Title</label>
+                    <input type="text" id="title-input" class="width-constraint" required>
+                </div>
+                <div>
+                    <label for="author-input">Author</label>
+                    <input type="text" id="author-input" class="width-constraint" required>
+                </div>
+                <div>
+                    <label for="pages-input">Number of Pages</label>
+                    <input type="number" id="pages-input" class="width-constraint" required>
+                </div>
+                <div>
+                    <label for="read-input">Read?</label>
+                    <input type="checkbox" id="read-input" required>
+                </div>
+                <button class="width-constraint" >Add</button>
+            </form>
         </div>
     </div>
 </body>
