@@ -35,7 +35,7 @@ h1 {
     grid-template-rows: auto 1fr;
 }
 
-.library-container > .books-container {
+.library-container > #books-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);
     grid-template-rows: 300px;
@@ -44,14 +44,14 @@ h1 {
     padding: 20px;
 }
 
-.library-container > .books-container > .book {
+.library-container > #books-container > .book {
     display: grid;
     grid-template-rows: repeat(4, 1fr) 1fr;
     justify-items: center;
     padding: 10px;
 }
 
-.library-container >.books-container .remove-button {
+.library-container > #books-container .remove-button {
     align-self: end;
 }
 
