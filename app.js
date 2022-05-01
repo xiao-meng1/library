@@ -1,10 +1,10 @@
 const addButton = document.querySelector("#add-button");
+addButton.addEventListener("click", addBookEvent);
+
 const titleInput = document.querySelector("#title-input");
 const authorInput = document.querySelector("#author-input");
 const pagesInput = document.querySelector("#pages-input");
 const readInput = document.querySelector("#read-input");
-
-addButton.addEventListener("click", addBookEvent);
 
 let myLibrary = [];
 
@@ -15,16 +15,17 @@ function addBookEvent() {
         return;
     }
 
-    addBookToLibrary();
-    clearNewBookInputs();
-    bookElement = createBookElement();
+    const newBook = createNewBook();
+    myLibrary.push(newBook);
+    bookElement = createBookElement(newBook);
     addBookElementToDOM(bookElement);
+    clearNewBookInputs();
 }
 
-function addBookToLibrary() {
+function createNewBook() {
     const newBook = new Book(titleInput.value, authorInput.value, 
-                                pagesInput.value, readInput.value);
-    myLibrary.push(newBook);
+                                pagesInput.value, readInput.checked);
+    return newBook;
 }
 
 function validateNewBookForm() {
@@ -39,7 +40,7 @@ function clearNewBookInputs () {
     readInput.checked = false;
 }
 
-function createBookElement() {
+function createBookElement(newBook) {
     const bookNumber = Number(myLibrary.length);
 
     const book = document.createElement("div");
@@ -61,17 +62,19 @@ function createBookElement() {
 
     book.dataset.bookNumber = `${bookNumber}`;
     book.classList = "book border";
-    title.textContent = "Title";
-    author.textContent = "Author";
-    pages.textContent = "x page";
+    title.textContent = newBook.title;
+    author.textContent = newBook.author;
+    pages.textContent = newBook.numberOfPages;
     labelCheckboxContainer.classList = "label-checkbox-container";
     label.textContent = "Read?";
     label.setAttribute("for", `read-book-${bookNumber}`);
     input.setAttribute("type", "checkbox");
     input.setAttribute("id", `read-book-${bookNumber}`);
+    input.checked = newBook.read;
     button.textContent = "Remove";
     button.dataset.bookNumber = `${bookNumber}`;
 
+    console.log(readInput.checked);
     return book;
 }
 
