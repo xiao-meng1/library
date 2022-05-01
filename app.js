@@ -40,6 +40,8 @@ function clearNewBookInputs () {
 }
 
 function createBookElement() {
+    const bookNumber = Number(myLibrary.length);
+
     const book = document.createElement("div");
     const title = document.createElement("h2");
     const author = document.createElement("h3");
@@ -57,17 +59,18 @@ function createBookElement() {
     book.appendChild(labelCheckboxContainer);
     book.appendChild(button);
 
-    book.dataset.bookNumber = "index";
+    book.dataset.bookNumber = `${bookNumber}`;
     book.classList = "book border";
     title.textContent = "Title";
     author.textContent = "Author";
     pages.textContent = "x page";
     labelCheckboxContainer.classList = "label-checkbox-container";
     label.textContent = "Read?";
-    label.setAttribute("for", "read-book-index");
+    label.setAttribute("for", `read-book-${bookNumber}`);
     input.setAttribute("type", "checkbox");
-    input.setAttribute("id", "read-book-index");
+    input.setAttribute("id", `read-book-${bookNumber}`);
     button.textContent = "Remove";
+    button.dataset.bookNumber = `${bookNumber}`;
 
     return book;
 }
