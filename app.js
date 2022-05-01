@@ -74,7 +74,11 @@ function createBookElement(newBook) {
     button.textContent = "Remove";
     button.dataset.bookNumber = `${bookNumber}`;
 
-    console.log(readInput.checked);
+    input.addEventListener("change", () => {
+        const bookInLibrary = myLibrary[bookNumber - 1];
+        bookInLibrary.read = !(bookInLibrary.read);
+    })
+
     return book;
 }
 
@@ -82,7 +86,6 @@ function addBookElementToDOM(bookElement) {
     const booksContainer = document.querySelector("#books-container");
     booksContainer.appendChild(bookElement);
 }
-
 
 function Book(title, author, numberOfPages, read) {
     this.title = title;
