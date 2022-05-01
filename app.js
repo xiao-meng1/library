@@ -64,7 +64,7 @@ function createBookElement(newBook) {
     book.classList = "book border";
     title.textContent = newBook.title;
     author.textContent = newBook.author;
-    pages.textContent = newBook.numberOfPages;
+    pages.textContent = `${newBook.numberOfPages} pages`;
     labelCheckboxContainer.classList = "label-checkbox-container";
     label.textContent = "Read?";
     label.setAttribute("for", `read-book-${bookNumber}`);
@@ -75,9 +75,12 @@ function createBookElement(newBook) {
     button.dataset.bookNumber = `${bookNumber}`;
 
     input.addEventListener("change", () => {
-        const bookInLibrary = myLibrary[bookNumber - 1];
-        bookInLibrary.read = !(bookInLibrary.read);
-    })
+        newBook.toggleRead(bookNumber);
+    });
+
+    button.addEventListener("click", () => {
+        book.remove();
+    });
 
     return book;
 }
@@ -92,4 +95,9 @@ function Book(title, author, numberOfPages, read) {
     this.author = author;
     this.numberOfPages = numberOfPages;
     this.read = read;
+}
+
+Book.prototype.toggleRead = (bookNumber) => {
+    const bookInLibrary = myLibrary[bookNumber - 1];
+    bookInLibrary.read = !(bookInLibrary.read);
 }
