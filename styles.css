@@ -3,7 +3,6 @@
 }
 
 html, body {
-    height: 100%;
     margin: 0;
 }
 
@@ -19,14 +18,14 @@ h1 {
 .body-container {
     display: grid;
     grid-template-columns: 1000px 200px;
-    grid-template-rows: 300px 400px;
+    grid-template-rows: 300px minmax(400px, 1fr);
     grid-template-areas:
         "library new-book"
         "library .";
     gap: 100px;
     justify-content: center;
     align-content: center;
-    padding-top: 80px;
+    padding: 80px;
 }
 
 .library-container {
