@@ -33,13 +33,6 @@ function validateNewBookForm() {
             || pagesInput.value === "") ? false : true;
 }
 
-function clearNewBookInputs () {
-    titleInput.value = "";
-    authorInput.value = "";
-    pagesInput.value = "";
-    readInput.checked = false;
-}
-
 function createBookElement(newBook) {
     const bookNumber = Number(myLibrary.length);
 
@@ -72,14 +65,13 @@ function createBookElement(newBook) {
     input.setAttribute("id", `read-book-${bookNumber}`);
     input.checked = newBook.read;
     button.textContent = "Remove";
-    button.dataset.bookNumber = `${bookNumber}`;
 
     input.addEventListener("change", () => {
         newBook.toggleRead(bookNumber);
     });
 
     button.addEventListener("click", () => {
-        book.remove();
+        newBook.delete(bookNumber);
     });
 
     return book;
@@ -88,6 +80,13 @@ function createBookElement(newBook) {
 function addBookElementToDOM(bookElement) {
     const booksContainer = document.querySelector("#books-container");
     booksContainer.appendChild(bookElement);
+}
+
+function clearNewBookInputs () {
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = false;
 }
 
 function Book(title, author, numberOfPages, read) {
@@ -100,4 +99,10 @@ function Book(title, author, numberOfPages, read) {
 Book.prototype.toggleRead = (bookNumber) => {
     const bookInLibrary = myLibrary[bookNumber - 1];
     bookInLibrary.read = !(bookInLibrary.read);
+}
+
+Book.prototype.delete = (bookNumber) => {
+    book = document.querySelector(`[data-book-number="${bookNumber}"]`);
+    book.remove();
+    myLibrary.splice(bookNumber - 1, 1);
 }
