@@ -89,20 +89,20 @@ function clearNewBookInputs () {
     readInput.checked = false;
 }
 
-function Book(title, author, numberOfPages, read) {
-    this.title = title;
-    this.author = author;
-    this.numberOfPages = numberOfPages;
-    this.read = read;
-}
-
-Book.prototype.toggleRead = (bookNumber) => {
-    const bookInLibrary = myLibrary[bookNumber - 1];
-    bookInLibrary.read = !(bookInLibrary.read);
-}
-
-Book.prototype.delete = (bookNumber) => {
-    book = document.querySelector(`[data-book-number="${bookNumber}"]`);
-    book.remove();
-    myLibrary.splice(bookNumber - 1, 1);
+class Book {
+    constructor(title, author, numberOfPages, read) {
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+        this.read = read;
+    }
+    toggleRead = (bookNumber) => {
+        const bookInLibrary = myLibrary[bookNumber - 1];
+        bookInLibrary.read = !(bookInLibrary.read);
+    }
+    delete = (bookNumber) => {
+        const book = document.querySelector(`[data-book-number="${bookNumber}"]`);
+        book.remove();
+        myLibrary.splice(bookNumber - 1, 1);
+    }
 }
