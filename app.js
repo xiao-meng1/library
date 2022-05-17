@@ -1,12 +1,29 @@
 const addButton = document.querySelector("#add-button");
-addButton.addEventListener("click", addBookEvent);
-
 const titleInput = document.querySelector("#title-input");
 const authorInput = document.querySelector("#author-input");
 const pagesInput = document.querySelector("#pages-input");
 const readInput = document.querySelector("#read-input");
 
 let myLibrary = [];
+
+function addAddNewBookFormEvents() {
+    addButton.addEventListener("click", addBookEvent);
+    titleInput.addEventListener("input", () => {
+        if (!titleInput.validity.valueMissing) {
+            titleInput.setCustomValidity("");
+        }
+    });
+    authorInput.addEventListener("input", () => {
+        if (!authorInput.validity.valueMissing) {
+            authorInput.setCustomValidity("");
+        }
+    });
+    pagesInput.addEventListener("input", () => {
+        if (!pagesInput.validity.valueMissing) {
+            pagesInput.setCustomValidity("");
+        }
+    });
+}
 
 function addBookEvent() {
     const formFilled = validateNewBookForm();
@@ -29,6 +46,21 @@ function createNewBook() {
 }
 
 function validateNewBookForm() {
+    if (pagesInput.validity.valueMissing) {
+        pagesInput.setCustomValidity("This field is required");
+        pagesInput.reportValidity();
+    }
+
+    if (authorInput.validity.valueMissing) {
+        authorInput.setCustomValidity("This field is required");
+        authorInput.reportValidity();
+    }
+
+    if (titleInput.validity.valueMissing) {
+        titleInput.setCustomValidity("This field is required");
+        titleInput.reportValidity();
+    }
+
     return (titleInput.value === "" || authorInput.value === ""
             || pagesInput.value === "") ? false : true;
 }
@@ -106,3 +138,5 @@ class Book {
         myLibrary.splice(bookNumber - 1, 1);
     }
 }
+
+addAddNewBookFormEvents();
