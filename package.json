@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "firebase": "^9.8.3"
+  },
+  "name": "y",
+  "description": "This a project to practice objects, classes, and prototypal inheritance. Check it out [here](https://xiao-meng1.github.io/library/).",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "~5.73.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiao-meng1/library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiao-meng1/library/issues"
+  },
+  "homepage": "https://github.com/xiao-meng1/library#readme"
+}
